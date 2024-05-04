@@ -7,6 +7,6 @@
   --white: hsl(0,0%,100%);
   --red: hsl(0,100%,60%);
   --light-red: hsl(0,100%,93%);
-  --grey: hsl(0,0%,91%);
-
+  --grey: hsl(0, 0%, 92%);
+  --dark-grey: hsl(206,15%,40%);
 }
