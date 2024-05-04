@@ -1,19 +1,10 @@
 /* MOBILE FIRST */
 
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 0;
-    min-width: 0;
-}
-
 * {
     color: var(--dark-blue);
 }
 
 #root {
-    margin: 0 ;
-    padding: 0;
     text-align: center;
     box-sizing: border-box;
 }
@@ -121,7 +112,7 @@ body {
         }
 
         input, button {
-            width: 18rem !important;
+            width: 18rem;
         }
     }
 }
@@ -175,7 +166,6 @@ body {
 
         input {
             font-size: 1rem;
-            margin: 0;
             padding: 0.5rem;
             padding-left: 0.5rem;
         }
@@ -185,7 +175,7 @@ body {
         }
 
         input, button {
-            width: 12.5rem !important;
+            width: 12.5rem ;
         }
     }
 }
