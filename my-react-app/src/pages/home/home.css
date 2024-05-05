@@ -1,0 +1,167 @@
+/* MOBILE FIRST */
+
+* {
+    margin: 0 ;
+    padding: 0;
+    color: var(--dark-blue);
+}
+
+#root {
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--white);
+}
+
+.purple-container {
+    height: 60%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--dark-purple);
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    box-shadow: 5px 8px 8px hsla(0, 0%, 0%, 0.3);
+
+    img {
+        height: 60%;
+        width: 60%;
+    }
+}
+
+.white-container {
+    display: grid;
+    gap: 1rem;
+    margin: 10%;
+
+    h1 {
+        font-family: 'Baloo Thambi', sans-serif;
+        margin-top: 1rem;
+        font-size: 2.6rem;
+    }
+
+    h2 {
+        margin-top: 2rem;
+        text-align: left;
+    }
+    
+    p {
+        margin-bottom: 2rem;
+        text-align: left;
+    }
+
+    button {
+        border-radius: 3rem;
+        border: none;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    .btn-login {
+        background-color: var(--light-purple);
+        color: var(--dark-purple);
+    }
+
+    .btn-signin {
+        background-color: var(--dark-purple);
+        color: var(--light-purple);
+    }
+}
+
+/* 768px 1024px */
+
+@media (min-width: 768px) and (max-width: 1024px), (min-height: 768px) {
+    .purple-container {
+        border-bottom-left-radius: 3rem;
+        border-bottom-right-radius: 3rem;
+
+        img {
+            height: 50%;
+            width: 50%;
+        }
+    }
+    
+    .white-container {
+        h1 {
+            margin-top: 2rem;
+            font-size: 3.6rem;
+        }
+
+        h2 {
+            font-size: 2.1rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+        }
+    
+        button {
+            border-radius: 4rem;
+            font-size: 1.5rem;
+        }
+
+        .btn-login {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+/* +1024px */
+
+@media (min-width: 1024px) or (min-height: 1024px) {
+    .container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .purple-container {
+        height: 100%;
+        width: 60%;
+
+        border-radius: 0;
+        border-top-right-radius: 3rem;
+        border-bottom-right-radius: 3rem;
+    
+        img {
+            height: 90%;
+            width: 90%;
+        }
+    }
+    
+    .white-container {
+        h1 {
+            margin-top: 4rem;
+            font-size: 3.8rem;
+        }
+    
+        h2 {
+            font-size: 2rem;
+        }
+        
+        p {
+            font-size: 1.1rem;
+        }
+    
+        button {
+            font-size: 1.3rem;
+        }
+    }
+}
+
+/* Hovers */
+
+.btn-login:hover,
+.btn-signin:hover {
+    background-color: var(--blue);
+    color: var(--white);
+    box-shadow: 2px 6px 6px hsla(0, 0%, 0%, 0.25);
+}
