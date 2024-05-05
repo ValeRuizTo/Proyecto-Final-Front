@@ -2,7 +2,7 @@
 
 ## Nombres
 
-Valentina Ruiz (0000)
+Valentina Ruiz (0000300604)
 
 Mariana Salas (0000296781)
 
