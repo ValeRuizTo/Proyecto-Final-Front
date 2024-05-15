@@ -1,5 +1,6 @@
 import React from 'react'
 import imgLogo from '../../assets/logo.jpg';
+import { Link } from 'react-router-dom';
 import './home.css';
 
 const Home = () => {
@@ -14,8 +15,8 @@ const Home = () => {
                 <h1>socialGarden</h1>
                 <h2>¡Bienvenido!</h2>
                 <p>Por favor, ingresa tu sesión</p>
-                <button className="btn-login">Log In</button>
-                <button className="btn-signin">Sign In</button>
+                <Link to="/login" className="btn-login">Log In</Link>
+                <Link to="/signin" className="btn-signin">Sign In</Link>
             </div>
         </div>
     )
