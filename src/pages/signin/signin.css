@@ -54,14 +54,14 @@
         font-size: 1rem;
     }
 
-    button {
+    .btn-crear {
         border-radius: 3rem;
         border: none;
         font-weight: bold;
         font-size: 1.5rem;
     }
 
-    input, button {
+    input, .btn-crear {
         width: 13rem;
     }
 
@@ -74,13 +74,9 @@
 /* 768px 1024px */
 
 @media (min-width: 768px) and (max-width: 1024px), (min-height: 768px) {
-    
-    body {
-        background-color: var(--white);
-    }
-
     .white-container-signin {
-        img {
+    background-color: var(--white);
+    img {
             border-bottom-left-radius: 3rem;
             border-bottom-right-radius: 3rem;
         }
@@ -103,19 +99,18 @@
         }
     
         input {
-            height: 2rem;
             border-radius: 1rem;
             border: 0.2rem solid var(--dark-grey);
             padding: 0.8rem;
             font-size: 1.5rem;
         }
     
-        button {
+        .btn-crear {
             border-radius: 5rem;
             font-size: 2rem;
         }
 
-        input, button {
+        input, .btn-crear {
             width: 18rem;
         }
     }
@@ -135,7 +130,7 @@
     .white-container-signin {
         background-color: var(--white);
         flex-direction: row-reverse;
-        width: 43rem;
+        width: 44rem;
         height: 34rem;
         border-radius: 2.5rem;
         box-shadow: 3px 10px 10px hsla(0, 0%, 0%, 0.5);
@@ -176,11 +171,11 @@
             border-radius: 1rem;
         }
 
-        label, button {
+        label, .btn-crear {
             font-size: 1.2rem;
         }
 
-        input, button {
+        input, .btn-crear {
             width: 12.5rem;
         }
     }
