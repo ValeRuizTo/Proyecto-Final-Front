@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import imgSuccess from '../../assets/success.jpg';
 import './success.css';
 
@@ -13,7 +14,7 @@ const Success = () => {
                     <h1>¡Creado con éxito!</h1>
                     <p>Vuelve a la página principal</p>
                 </div>
-                <button className="btn-home">Página principal</button>
+                <Link to="/" className="btn-home">Página principal</Link>
             </div>
         </div>
     )

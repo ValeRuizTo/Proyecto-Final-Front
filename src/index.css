@@ -20,7 +20,9 @@ input {
 
 .btn-login,
 .btn-signin,
-.btn-ingresar, button {
+.btn-ingresar, 
+.btn-home,
+button {
   font-family: 'Source Sans Pro', sans-serif;
   text-decoration: none;
   padding: 0.5em 1em;
