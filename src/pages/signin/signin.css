@@ -54,14 +54,14 @@
         font-size: 1rem;
     }
 
-    button {
+    .btn-crear {
         border-radius: 3rem;
         border: none;
         font-weight: bold;
         font-size: 1.5rem;
     }
 
-    input, button {
+    input, .btn-crear {
         width: 13rem;
     }
 
@@ -105,12 +105,12 @@
             font-size: 1.5rem;
         }
     
-        button {
+        .btn-crear {
             border-radius: 5rem;
             font-size: 2rem;
         }
 
-        input, button {
+        input, .btn-crear {
             width: 18rem;
         }
     }
@@ -171,11 +171,11 @@
             border-radius: 1rem;
         }
 
-        label, button {
+        label, .btn-crear {
             font-size: 1.2rem;
         }
 
-        input, button {
+        input, .btn-crear {
             width: 12.5rem;
         }
     }
