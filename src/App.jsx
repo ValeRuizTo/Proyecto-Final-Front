@@ -10,9 +10,9 @@ function App() {
     <AuthIsSignedIn>
       <Router>
         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signin" element={<Signin />} />
+            <Route path="/" element={<Navigate replace to={"/tweets"} />} />
+            <Route path="/login" element={<Navigate replace to={"/tweets"} />} />
+            <Route path="/signin" element={<Navigate replace to={"/tweets"} />} />
             <Route path="/success" element={<Success />} />
             <Route path="/tweets" element={<Tweets />} />
             <Route path="*" element={<Other />} />
