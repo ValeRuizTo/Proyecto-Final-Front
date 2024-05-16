@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './tweets.css';
 
 const Tweets = () => {
@@ -6,6 +7,7 @@ const Tweets = () => {
         <div className="container-success">
             <div className="white-container-success">    
                     <h1>¡TWEETS!</h1>
+                    <Link to="/" className="btn-home">Log Out</Link>
             </div>
         </div>
     )
