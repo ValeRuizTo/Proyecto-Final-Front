@@ -22,9 +22,12 @@ function App() {
     <AuthIsNotSignedIn>
       <Router>
         <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path={"/login"} element={<Login />} />
-        <Route path="/tweets" element={<Navigate replace to={"/"} />} />
+          <Route path="/" element={<Home />} />
+          <Route path={"/login"} element={<Login />} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/success" element={<Success />} />
+          <Route path="/tweets" element={<Navigate replace to={"/"} />} />
+          <Route path="*" element={<Other />} />
         </Routes>
       </Router>
     </AuthIsNotSignedIn>
