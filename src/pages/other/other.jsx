@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import imgError from '../../assets/error.jpg';
 import './other.css';
 
@@ -13,7 +14,7 @@ const Other = () => {
                     <h1>404</h1>
                     <p>Página no encontrada</p>
                 </div>
-                <button className="btn-home">Página principal</button>
+                <Link to="/" className="btn-home">Página principal</Link>
             </div>
         </div>
     )

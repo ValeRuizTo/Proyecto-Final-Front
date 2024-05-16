@@ -14,9 +14,21 @@ h1 {
   line-height: 1.1;
 }
 
+input {
+  font-family: 'Roboto', sans-serif;
+}
+
+.btn-login,
+.btn-signin,
+.btn-ingresar, 
+.btn-home,
+.btn-crear,
 button {
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  font-size: 0.8em;
+  font-weight: bold;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -24,13 +36,10 @@ button {
 /* Error */
 
 .error {
-  height: 1.5rem;
-  border-radius: 0.5rem;
-  border: 0.1rem solid var(--red);
+  border: 0.1rem solid var(--red)!important;
   background-color: var(--light-red);
-  padding: 0.5rem;
 }
 
-.error-label {
+label.label-error {
   color: var(--red);
 }
