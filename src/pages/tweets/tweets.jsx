@@ -10,7 +10,7 @@ const Tweets = () => {
     const handleLogout = async () => {
         localStorage.setItem("username", "");
         signOut();
-        window.location.href = "/login";
+        window.location.href = "/";
     };
     
     return (
