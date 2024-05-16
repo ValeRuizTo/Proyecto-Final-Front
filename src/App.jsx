@@ -24,7 +24,7 @@ function App() {
         <Routes>
         <Route path="/" element={<Home />} />
         <Route path={"/login"} element={<Login />} />
-        <Route path="/tweets" element={<Navigate replace to={"/login"} />} />
+        <Route path="/tweets" element={<Navigate replace to={"/"} />} />
         </Routes>
       </Router>
     </AuthIsNotSignedIn>
