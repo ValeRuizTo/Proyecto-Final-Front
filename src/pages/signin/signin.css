@@ -130,7 +130,7 @@
     .white-container-signin {
         background-color: var(--white);
         flex-direction: row-reverse;
-        width: 43rem;
+        width: 44rem;
         height: 34rem;
         border-radius: 2.5rem;
         box-shadow: 3px 10px 10px hsla(0, 0%, 0%, 0.5);
