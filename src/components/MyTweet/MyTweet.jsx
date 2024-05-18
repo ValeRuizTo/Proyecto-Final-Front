@@ -1,6 +1,6 @@
-import './Tweet.css'
+import '../Tweet/Tweet.css'
 
-const Tweet = () => {
+const MyTweet = () => {
 
     return (
         <div className="container-tweet"> 
@@ -10,10 +10,11 @@ const Tweet = () => {
                 <p className="text-hashtag"># HashTag</p>
             </div>
             <div className="purple-container-tweet">
-                <p>♡</p>
+                <p className="edit">🖍</p>
+                <p className="delete">🗑</p>
             </div>
         </div>
     )
 }
 
-export default Tweet
+export default MyTweet

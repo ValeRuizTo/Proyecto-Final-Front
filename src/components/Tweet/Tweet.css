@@ -36,7 +36,12 @@
     justify-content: center;
 
     p {
-         color: var(--white);
+        color: var(--white);
+        font-size: 4rem;
+    }
+
+    .edit {
+        font-size: 3.3rem;
     }
 }
 

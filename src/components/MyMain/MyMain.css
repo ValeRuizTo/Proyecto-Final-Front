@@ -1,0 +1,10 @@
+.my-section-2 {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+        font-family: 'Baloo Thambi', sans-serif;
+        color: var(--dark-purple);
+    }
+}

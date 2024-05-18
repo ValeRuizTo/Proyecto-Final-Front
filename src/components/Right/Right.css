@@ -6,10 +6,9 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 1rem;
-    padding-bottom: 0.3rem;
+    padding: 0.7rem;
+
+    border-bottom: 0.1rem solid var(--grey);
 }
 
 .img-container-right {
@@ -27,6 +26,7 @@
     }
 
     .email-user {
+        font-size: 0.7rem;
         font-style: italic;
         font-family: 'Arial Italic', 'Times New Roman Italic', sans-serif;
     }
@@ -47,11 +47,11 @@
         color: var(--white);
     }
 
-    .btn-create-tweet {
+    .btn-my, .btn-other {
         background-color: var(--dark-purple);
     }
 
-    .btn-my {
+    .btn-create-tweet {
         background-color: var(--purple);
     }
 }
@@ -59,6 +59,7 @@
 /* Hovers */
 
 .btn-create-tweet:hover,
-.btn-my:hover {
+.btn-my:hover,
+.btn-other:hover {
     background-color: var(--blue);
 }
