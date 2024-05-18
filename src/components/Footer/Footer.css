@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: center;
     background-color: var(--dark-blue);
+    padding: 1%;
 
     p {
         font-size: 50%;
