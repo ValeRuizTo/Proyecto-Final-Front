@@ -6,7 +6,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0.7rem;
+    padding: 1rem;
 
     border-bottom: 0.1rem solid var(--grey);
 }
@@ -38,13 +38,17 @@
     gap: 1.5rem;
     margin: 1rem;
 
-    button {
+    .btn-my, .btn-other, .btn-create-tweet {
         width: 9rem;
+        text-decoration: none;
         height: 2.5rem;
         border-radius: 2rem;
         font-weight: bold;
         border: none;
         color: var(--white);
+        display: flex;
+        justify-content: center; 
+        align-items: center;
     }
 
     .btn-my, .btn-other {

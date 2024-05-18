@@ -1,3 +1,5 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import '../Right/Right.css';
 import imgProfile from '../../assets/profile.jpg';
 
@@ -11,8 +13,8 @@ const MyRight = () => {
             </div>
 
             <div className="right-container-buttons">
-                <button className="btn-create-tweet">Crear Tweet</button>
-                <button className="btn-other">Otros Tweets</button>
+                <Link to="/new" className="btn-create-tweet">Crear Tweet</Link>
+                <Link to="/tweets"  className="btn-other">Otros Tweets</Link>
             </div>
         </div>
     )
