@@ -53,6 +53,7 @@ label.label-error {
 .btn-crear:hover,
 .btn-create-tweet:hover,
 .btn-my:hover ,
-.btn-other:hover {
+.btn-other:hover,
+.btn-save:hover {
     box-shadow: 2px 6px 6px hsla(0, 0%, 0%, 0.2);
 }

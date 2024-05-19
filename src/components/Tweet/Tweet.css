@@ -2,6 +2,7 @@
     background-color: var(--white);
     margin: 1rem;
     border-radius: 1.2rem;
+    width: 91.5%;
 
     display: flex;
     flex-direction: row;

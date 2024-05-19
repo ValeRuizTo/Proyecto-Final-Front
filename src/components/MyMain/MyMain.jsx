@@ -1,4 +1,4 @@
-import './MyMain.css';
+import '../Main/Main.css';
 import {Search, MyTweet} from '../index'
 
 const MyMain = () => {
