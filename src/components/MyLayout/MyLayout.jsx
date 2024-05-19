@@ -1,4 +1,4 @@
-import {Footer, Header, MyMain, MyRight} from '../index'
+import {Header, MyMain, MyRight} from '../index'
 import '../Layout/Layout.css';
 
 const MyLayout  = () => {
@@ -7,7 +7,6 @@ const MyLayout  = () => {
           <Header/>
           <MyRight/>
           <MyMain/>
-          <Footer/>
         </div>
     )
 }

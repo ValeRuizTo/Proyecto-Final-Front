@@ -2,7 +2,6 @@
     background-color: var(--white);
     margin: 1rem;
     border-radius: 1.2rem;
-    width: 91.5%;
 
     display: flex;
     flex-direction: row;
@@ -16,8 +15,12 @@
     gap: 0.5rem;
     align-items: flex-start;
 
+    p {
+        font-size: 1.2rem;
+    }
+
     .user {
-        font-weight: bold;
+        font-weight: bold; 
     }
 
     .text-hashtag {
@@ -43,6 +46,87 @@
 
     .edit {
         font-size: 3.3rem;
+    }
+}
+
+/* 768px 1024px */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container-tweet {
+        margin: 2rem;
+        border-radius: 2.2rem;
+    } 
+    
+    .white-container-tweet {
+        padding: 2rem;
+        gap: 1.5rem;
+        p {
+            font-size: 2rem;
+        }
+    }
+    
+    .purple-container-tweet {
+        width: 10rem;       
+        border-radius: 2.2rem;
+
+        p {
+            font-size: 6rem;
+        }
+    
+        .edit {
+            font-size: 4.3rem;
+        }
+    }
+}
+
+
+/* +1024px */
+
+@media (orientation: landscape) and ((min-width: 1024px) or (min-height: 1024px)) {
+    .container-tweet {
+        margin: 1.5rem;
+        border-radius: 1.2rem;
+    } 
+    
+    .white-container-tweet {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    
+        p {
+            font-size: 1.5rem;
+        }
+    
+        .user {
+            font-weight: bold; 
+        }
+    
+        .text-hashtag {
+            font-style: italic;
+            font-family: 'Arial Italic', 'Times New Roman Italic', sans-serif;
+            color: var(--blue)
+        }
+    }
+    
+    .purple-container-tweet {
+        width: 5rem;
+        background-color: var(--purple);        
+        border-radius: 1.2rem;
+    
+        display: flex;        
+        flex-direction: column;
+        justify-content: center;
+    
+        p {
+            color: var(--white);
+            font-size: 4rem;
+        }
+    
+        .edit {
+            font-size: 3.3rem;
+        }
     }
 }
 
