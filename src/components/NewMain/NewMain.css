@@ -4,4 +4,37 @@
     align-items: flex-start;
     padding: 1rem;
     gap: 1rem;
+
+    .container-new-tweet {
+        align-self: center;
+    }
+}
+
+/* 768px 1024px */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .new-section-2 {
+        gap: 0;
+        padding: 0;
+
+        button {
+            margin-left: 2.5rem;
+            margin-bottom: 2.5rem;
+            font-size: 1.5rem;
+            height: 4.5rem;
+            border-radius: 3rem;
+        }
+    }
+}
+
+/* +1024px */
+
+@media (orientation: landscape) and ((min-width: 1024px) or (min-height: 1024px))  {
+    .new-section-2 {
+        button {
+            margin-left: 1rem;
+            font-size: 1.2rem;
+            height: 2.7rem;
+        }
+    }     
 }

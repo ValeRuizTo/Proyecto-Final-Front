@@ -31,3 +31,47 @@
         border: 0.1rem solid var(--dark-grey);
     }
 } 
+
+/* 768px 1024px */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container-new-tweet {
+        padding: 0;
+        margin: 2rem;
+        width: 90%;
+    
+        form.form-column {
+            padding: 2rem;
+        }
+    
+        label, input {
+            font-size: 1.7rem;
+        }
+        input {
+            padding: 1rem;
+            border: 0.2rem solid var(--dark-grey);
+        }
+    }   
+}
+
+/* +1024px */
+
+@media (orientation: landscape) and ((min-width: 1024px) or (min-height: 1024px))  {
+    .container-new-tweet {
+        width: 95%;
+        margin: 1rem;
+    
+        form.form-column {
+            padding: 2rem;
+        }
+    
+        label, input {
+            font-size: 1.7rem;
+        }
+
+        input {
+            height: 1rem;
+            padding: 1rem;
+        }
+    }      
+}

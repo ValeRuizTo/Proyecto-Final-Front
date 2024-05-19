@@ -83,6 +83,10 @@
             padding: 0.5rem;
         }
 
+        .btn-container {
+            gap: 1.5rem;
+        }
+
         button {
             width: 3.3rem;
             height: 3.3rem;
