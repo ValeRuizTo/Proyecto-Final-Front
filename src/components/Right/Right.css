@@ -1,0 +1,142 @@
+.right-container {
+    background-color: var(--white);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+
+    border-bottom: 0.1rem solid var(--grey);
+}
+
+.img-container-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+
+    img {
+        width: 60%;
+    }
+
+    .user {
+        font-weight: bold;
+        margin-top: 0.5rem;
+        font-size: 1rem;
+    }
+
+    .email-user {
+        font-size: 0.7rem;
+        font-style: italic;
+        font-family: 'Arial Italic', 'Times New Roman Italic', sans-serif;
+    }
+}
+
+.right-container-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 1rem;
+
+    .btn-my, .btn-other, .btn-create-tweet, button {
+        width: 9rem;
+        text-decoration: none;
+        height: 2.5rem;
+        border-radius: 2rem;
+        font-weight: bold;
+        border: none;
+        color: var(--white);
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+    }
+
+    .btn-my, .btn-other {
+        background-color: var(--dark-purple);
+    }
+
+    .btn-create-tweet {
+        background-color: var(--purple);
+    }
+}
+
+/* 768px 1024px */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .right-container {
+        padding: 2rem;
+        border-bottom: 0.2rem solid var(--grey);
+    }
+    
+    .img-container-right {
+        .user {
+            margin-top: 1rem;
+            font-size: 2rem;
+        }
+    
+        .email-user {
+            font-size: 1.7rem;
+        }
+    }
+    
+    .right-container-buttons {
+        gap: 2.5rem;
+        margin: 2.5rem;
+    
+        .btn-my, .btn-other, .btn-create-tweet, button {
+            border-radius: 3.5rem;
+            width: 18rem;
+            height: 5rem;
+            font-size: 2rem;
+        }
+    }
+}
+
+/* +1024px */
+
+@media (orientation: landscape) and ((min-width: 1024px) or (min-height: 1024px)) {
+    .right-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        border-right: 0.1rem solid var(--dark-grey);
+    }
+
+    .img-container-right {
+        width: 70%;
+
+        img {
+            width: 100%;
+        }
+
+        .user {
+            font-size: 2rem;
+        }
+
+        .email-user {
+            font-size: 1.2rem;
+        }
+    }
+
+    .right-container-buttons {
+        gap: 1rem;
+
+        .btn-my, .btn-other, .btn-create-tweet, button {
+            width: 12rem;
+            font-size: 1.2rem;
+            height: 2.7rem;
+            border-radius: 2rem;
+        }
+    }
+}
+
+/* Hovers */
+
+.btn-create-tweet:hover,
+.btn-my:hover,
+.btn-other:hover {
+    background-color: var(--blue);
+}

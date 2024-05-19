@@ -1,0 +1,47 @@
+.main-container {
+    background-color: var(--light-purple);
+    display: flex;
+    flex-direction: column;
+}
+
+.my-section-2 {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+        font-family: 'Baloo Thambi', sans-serif;
+        color: var(--dark-purple);
+    }
+}
+
+.btn-save {
+    height: 2.6rem;
+    font-size: 1rem;
+    border-radius: 2rem;
+    border: none;
+    color: var(--white);
+    background-color: var(--blue);
+}
+
+
+/* 768px 1024px */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    h2 {
+        font-size: 2rem;
+        margin-top: 1rem;
+    }
+}
+
+/* +1024px */
+
+@media (orientation: landscape) and ((min-width: 1024px) or (min-height: 1024px)) {
+    .main-container {
+        width:100%;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+ }
