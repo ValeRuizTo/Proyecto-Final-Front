@@ -1,0 +1,104 @@
+.search-container {
+    background-color: var(--white);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    gap: 0.5rem;
+
+    padding: 1rem;
+
+    input {
+        border-radius: 1rem;
+        width: 100%;
+        padding-left: 0.5rem;
+        border: 0.1rem solid var(--dark-grey);
+    }
+
+    .btn-container {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+
+    button {
+        padding: 0;
+        width: 2.3rem;
+        height: 2.3rem;
+        border-radius: 100%;
+        border: none;
+    }
+
+    .btn-all {
+        color: var(--dark-purple);
+        background-color: var(--light-purple);
+    }
+
+    .btn-hashtag {
+        color: var(--white);
+        background-color: var(--dark-purple);
+    }
+}
+
+/* 768px 1024px */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .search-container {
+        padding: 2rem;
+        gap: 2rem;
+    
+        input {
+            border-radius: 2rem;
+            width: 100%;
+            padding-left: 2rem;
+            border: 0.2rem solid var(--dark-grey);
+            height: 4rem;
+            font-size: 1.5rem;
+        }
+    
+        .btn-container {
+            gap: 1.5rem;
+        }
+    
+        button {
+            width: 4.5rem;
+            height: 4.5rem;
+            font-size: 1.5rem;
+        }
+    }
+}
+
+/* +1024px */
+
+@media (orientation: landscape) and ((min-width: 1024px) or (min-height: 1024px)) {
+    .search-container {
+        gap: 2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    
+        input {
+            font-size: 1.5rem;
+            padding: 0.5rem;
+        }
+
+        .btn-container {
+            gap: 1.5rem;
+        }
+
+        button {
+            width: 3.3rem;
+            height: 3.3rem;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+/* Hovers */
+
+.btn-all:hover,
+.btn-hashtag:hover {
+    background-color: var(--blue);
+    color: var(--white);
+}

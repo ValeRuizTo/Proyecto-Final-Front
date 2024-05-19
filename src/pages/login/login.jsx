@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import imgPeople from '../../assets/people.jpg';
+import { AuthContext } from '../../contexts/AuthContext'; // Importar AuthContext
 import './login.css';
 
 const Login = () => {
+    const authContext = useContext(AuthContext); // Obtener el contexto de autenticación
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [usernameError, setUsernameError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -25,7 +29,17 @@ const Login = () => {
         setPasswordError(password.trim() === '');
 
         if (username.trim() !== '' && password.trim() !== '') {
-            return <Link to="/home" />;
+            // Verificar las credenciales
+            if (username === "admin@admin.com" && password === "admin") {
+                // Credenciales válidas
+                localStorage.setItem('username', username);
+                authContext.signIn(); // Autenticar al usuario utilizando el contexto de autenticación
+                // Redireccionar al usuario a la página deseada
+                window.location.href = '/tweets'; // Cambiar la ruta según la necesidad
+            } else {
+                // Credenciales incorrectas
+                setErrorMessage("¡Credenciales incorrectas!");
+            }
         }
     };
 
@@ -59,13 +73,15 @@ const Login = () => {
                             value={password}
                             onChange={handleInputChange}
                         />
+                        {errorMessage && (
+                            <p className="error-message">{errorMessage}</p>
+                        )}
                     </form>
-                    <Link
-                        to={username.trim() !== '' && password.trim() !== '' ? '/tweets' : '#'}
+                    <button
                         className="btn-ingresar"
                         onClick={handleLogin}>
                         Ingresar
-                    </Link>
+                    </button>
                 </div>
             </div>
         </div>

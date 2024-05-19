@@ -131,5 +131,4 @@ body {
 .btn-home:hover {
     background-color: var(--red);
     color: var(--white);
-    box-shadow: 2px 6px 6px hsla(0, 0%, 0%, 0.25);
 }
