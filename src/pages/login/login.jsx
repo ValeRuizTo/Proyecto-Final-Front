@@ -38,7 +38,7 @@ const Login = () => {
                 window.location.href = '/tweets'; // Cambiar la ruta según la necesidad
             } else {
                 // Credenciales incorrectas
-                setErrorMessage("Las credenciales son incorrectas. Por favor, inténtalo de nuevo.");
+                setErrorMessage("¡Credenciales incorrectas!");
             }
         }
     };
