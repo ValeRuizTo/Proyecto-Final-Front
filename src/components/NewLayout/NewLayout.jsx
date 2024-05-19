@@ -5,8 +5,10 @@ const NewLayout  = () => {
     return (
         <div className="layout-container">
           <Header/>
-          <NewRight/>
-          <NewMain/>
+          <div className="main-right">
+            <NewRight/>
+            <NewMain/>
+          </div>
         </div>
     )
 }
