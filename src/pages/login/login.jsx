@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import imgPeople from '../../assets/people.jpg';
 import { AuthContext } from '../../contexts/AuthContext'; // Importar AuthContext
@@ -24,21 +24,42 @@ const Login = () => {
         }
     };
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
         setUsernameError(username.trim() === '');
         setPasswordError(password.trim() === '');
 
         if (username.trim() !== '' && password.trim() !== '') {
-            // Verificar las credenciales
-            if (username === "admin@admin.com" && password === "admin") {
-                // Credenciales válidas
-                localStorage.setItem('username', username);
-                authContext.signIn(); // Autenticar al usuario utilizando el contexto de autenticación
-                // Redireccionar al usuario a la página deseada
-                window.location.href = '/tweets'; // Cambiar la ruta según la necesidad
-            } else {
-                // Credenciales incorrectas
-                setErrorMessage("¡Credenciales incorrectas!");
+            try {
+                const response = await fetch('https://api-proyecto-beryl.vercel.app/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ usernameOrEmail: username, password })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('Data:', data); // Agregado para depuración
+
+                    // Guardar el token JWT y el nombre de usuario en localStorage
+                    localStorage.setItem('username', data.userData.username);
+                    localStorage.setItem('token', data.token);
+
+                    authContext.signIn(); // Autenticar al usuario utilizando el contexto de autenticación
+
+                    // Redireccionar al usuario a la página deseada
+                    window.location.href = '/tweets'; // Cambiar la ruta según la necesidad
+                } else {
+                    // Manejar errores de autenticación
+                    const errorData = await response.json();
+                    console.log('Error data:', errorData); // Agregado para depuración
+                    setErrorMessage(errorData.error || '¡Credenciales incorrectas!');
+                }
+            } catch (error) {
+                // Manejar errores de red u otros errores
+                console.error('Error al iniciar sesión:', error);
+                setErrorMessage('Ocurrió un error al iniciar sesión. Detalle: ' + error.message);
             }
         }
     };
