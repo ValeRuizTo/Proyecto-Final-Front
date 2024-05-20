@@ -8,10 +8,12 @@ const Header  = () => {
     const { authStatus, signOut } = useContext(AuthContext);
 
     const handleLogout = async () => {
-        localStorage.setItem("username", "");
-        signOut();
-        window.location.href = "/";
+        localStorage.removeItem("username"); // Eliminar el nombre de usuario del almacenamiento local
+        localStorage.removeItem("token"); // Eliminar el token del almacenamiento local
+        signOut(); // Cerrar sesión
+        window.location.href = "/"; // Redirigir al usuario a la página de inicio
     };
+    
         
 
     return (
