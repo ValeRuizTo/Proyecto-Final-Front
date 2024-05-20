@@ -59,7 +59,7 @@ const Login = () => {
             } catch (error) {
                 // Manejar errores de red u otros errores
                 console.error('Error al iniciar sesión:', error);
-                setErrorMessage('Ocurrió un error al iniciar sesión. Detalle: ' + error.message);
+                setErrorMessage('Ocurrió un error al iniciar sesión:). Detalle: ' + error.message);
             }
         }
     };
