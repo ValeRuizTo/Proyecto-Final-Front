@@ -1,23 +1,66 @@
 import React, { useState, useEffect } from 'react';
 import '../Tweet/Tweet.css';
 
-// Componente para representar un tweet individual
-// eslint-disable-next-line react/prop-types
-const MyTweet = ({ username, tweet, hashtag }) => {
+
+const MyTweet = ({ username, tweet, hashtag, index }) => {
+    const [isEditing, setIsEditing] = useState(false);
+    const [currentTweet, setCurrentTweet] = useState(tweet);
+    const [currentHashtag, setCurrentHashtag] = useState(hashtag);
+
+    const handleEdit = () => {
+        setIsEditing(true);
+    };
+
+    const handleSave = () => {
+        setIsEditing(false);
+        // Recuperar el token de localStorage
+        const token = localStorage.getItem('token');
+        // Hacer la solicitud PUT a la API con el token de autorización
+        fetch(`https://api-proyecto-beryl.vercel.app/newtweet/${index}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': token, // Incluye el token en el encabezado de autorización
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                tweet: currentTweet,
+                hashtag: currentHashtag
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Tweet actualizado:', data);
+        })
+        .catch(error => console.error('Error actualizando tweet:', error));
+    };
+
     return (
         <div className="container-tweet"> 
             <div className="white-container-tweet">
                 <p className="user">{username}</p>
-                <p className="text-tweet">{tweet}</p>
-                <p className="text-hashtag">{hashtag}</p>
+                {isEditing ? (
+                    <div>
+                        <input value={currentTweet} onChange={(e) => setCurrentTweet(e.target.value)} />
+                        <input value={currentHashtag} onChange={(e) => setCurrentHashtag(e.target.value)} />
+                    </div>
+                ) : (
+                    <div>
+                        <p className="text-tweet">{currentTweet}</p>
+                        <p className="text-hashtag">{currentHashtag}</p>
+                    </div>
+                )}
             </div>
             <div className="purple-container-tweet">
-                <p className="edit">🖍</p>
+                {isEditing ? (
+                    <p className="save" onClick={handleSave}>💾</p>
+                ) : (
+                    <p className="edit" onClick={handleEdit}>🖍</p>
+                )}
                 <p className="delete">🗑</p>
             </div>
         </div>
     );
-}
+};
 
 // Componente para mostrar la lista de tweets del usuario logueado
 const TweetsList = () => {
@@ -57,6 +100,7 @@ const TweetsList = () => {
                     username={username} // Pasar el nombre de usuario a cada MyTweet
                     tweet={tweet.tweet}
                     hashtag={tweet.hashtag}
+                    index={index}
                 />
             ))}
         </div>
