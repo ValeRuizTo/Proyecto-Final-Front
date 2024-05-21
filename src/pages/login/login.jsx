@@ -40,7 +40,6 @@ const Login = () => {
 
                 if (response.ok) {
                     const data = await response.json();
-                    console.log('Data:', data); // Agregado para depuración
 
                     // Guardar el token JWT y el nombre de usuario en localStorage
                     localStorage.setItem('username', data.userData.username);
