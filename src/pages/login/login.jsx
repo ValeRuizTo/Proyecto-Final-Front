@@ -40,7 +40,6 @@ const Login = () => {
 
                 if (response.ok) {
                     const data = await response.json();
-                    console.log('Data:', data); // Agregado para depuración
 
                     // Guardar el token JWT y el nombre de usuario en localStorage
                     localStorage.setItem('username', data.userData.username);
@@ -59,7 +58,7 @@ const Login = () => {
             } catch (error) {
                 // Manejar errores de red u otros errores
                 console.error('Error al iniciar sesión:', error);
-                setErrorMessage('Ocurrió un error al iniciar sesión. Detalle: ' + error.message);
+                setErrorMessage('Ocurrió un error al iniciar sesión:). Detalle: ' + error.message);
             }
         }
     };
