@@ -79,9 +79,9 @@ const MyTweet = ({ username, tweet, hashtag, lugar }) => {
                 {isEditing ? (
                     <p className="save" onClick={handleSave}>💾</p>
                 ) : (
-                    <p className="edit" onClick={handleEdit}>🖍</p>
+                    <p className="edit" onClick={handleEdit}>✏️</p>
                 )}
-                <p className="delete"onClick={handleDelete}>🗑</p>
+                <p className="delete"onClick={handleDelete}>🗑️  </p>
             </div>
         </div>
     );
