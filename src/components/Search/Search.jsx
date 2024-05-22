@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './Search.css';
 
+// eslint-disable-next-line react/prop-types
 const Search = ({ onResults }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [error, setError] = useState(null);
