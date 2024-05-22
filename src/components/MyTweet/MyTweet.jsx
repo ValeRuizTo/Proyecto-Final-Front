@@ -64,7 +64,7 @@ const MyTweet = ({ username, tweet, hashtag, lugar }) => {
             <div className="white-container-tweet">
                 <p className="user">{username}</p>
                 {isEditing ? (
-                    <div>
+                    <div className="input-container">
                         <input value={currentTweet} onChange={(e) => setCurrentTweet(e.target.value)} />
                         <input value={currentHashtag} onChange={(e) => setCurrentHashtag(e.target.value)} />
                     </div>
