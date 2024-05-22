@@ -53,7 +53,7 @@ const MyTweet = ({ username, tweet, hashtag, lugar }) => {
         .then(response => response.json())
         .then(data => {
             console.log('Tweet eliminado:', data);
-            // Aquí podrías agregar lógica para actualizar la interfaz, como eliminar el tweet de la lista
+            
         })
         .catch(error => console.error('Error eliminando tweet:', error));
     };
@@ -132,3 +132,4 @@ const TweetsList = () => {
 };
 
 export default TweetsList;
+
