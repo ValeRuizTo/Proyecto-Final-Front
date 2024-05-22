@@ -1,24 +1,91 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import '../Tweet/Tweet.css';
 
-// Componente para representar un tweet individual
+
 // eslint-disable-next-line react/prop-types
-const MyTweet = ({ username, tweet, hashtag }) => {
+const MyTweet = ({ username, tweet, hashtag, lugar }) => {
+    
+    const [isEditing, setIsEditing] = useState(false);
+    const [currentTweet, setCurrentTweet] = useState(tweet);
+    const [currentHashtag, setCurrentHashtag] = useState(hashtag);
+
+    const handleEdit = () => {
+        setIsEditing(true);
+    };
+    const handleSave = () => {
+        setIsEditing(false);
+        const finalHashtag = currentHashtag ? currentHashtag : '#socialgarden';
+
+        // Recuperar el token de localStorage
+        const token = localStorage.getItem('token');
+        // Hacer la solicitud PUT a la API con el token de autorización
+        fetch(`https://api-proyecto-beryl.vercel.app/newtweet/${lugar}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': token, // Incluye el token en el encabezado de autorización
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                tweet: currentTweet,
+                hashtag: finalHashtag
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Tweet actualizado:', data);
+            // Actualizar el estado con el hashtag final
+            setCurrentHashtag(finalHashtag);
+        })
+        .catch(error => console.error('Error actualizando tweet:', error));
+    };
+
+    const handleDelete = () => {
+        //Recuperar el token de localStorage
+        const token = localStorage.getItem('token');
+        // Hacer la solicitud DELETE a la API con el token de autorización
+        fetch(`https://api-proyecto-beryl.vercel.app/newtweet/${lugar}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': token, // Incluye el token en el encabezado de autorización
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Tweet eliminado:', data);
+            // Aquí podrías agregar lógica para actualizar la interfaz, como eliminar el tweet de la lista
+        })
+        .catch(error => console.error('Error eliminando tweet:', error));
+    };
+    
+
     return (
         <div className="container-tweet"> 
             <div className="white-container-tweet">
                 <p className="user">{username}</p>
-                <p className="text-tweet">{tweet}</p>
-                <p className="text-hashtag">{hashtag}</p>
+                {isEditing ? (
+                    <div className="input-container">
+                        <input value={currentTweet} onChange={(e) => setCurrentTweet(e.target.value)} />
+                        <input value={currentHashtag} onChange={(e) => setCurrentHashtag(e.target.value)} />
+                    </div>
+                ) : (
+                    <div>
+                        <p className="text-tweet">{currentTweet}</p>
+                        <p className="text-hashtag">{currentHashtag}</p>
+                    </div>
+                )}
             </div>
             <div className="purple-container-tweet">
-                <p className="edit">🖍</p>
-                <p className="delete">🗑</p>
+                {isEditing ? (
+                        <button className="save" onClick={handleSave}>🖿</button>
+                    ) : (
+                        <button className="edit" onClick={handleEdit}>🖍</button>
+                    )}
+                    <button className="delete"onClick={handleDelete}>🗑</button>
             </div>
         </div>
     );
-}
-
+};
 // Componente para mostrar la lista de tweets del usuario logueado
 const TweetsList = () => {
     const [tweets, setTweets] = useState([]);
@@ -57,6 +124,7 @@ const TweetsList = () => {
                     username={username} // Pasar el nombre de usuario a cada MyTweet
                     tweet={tweet.tweet}
                     hashtag={tweet.hashtag}
+                    lugar={tweet.lugar}
                 />
             ))}
         </div>
