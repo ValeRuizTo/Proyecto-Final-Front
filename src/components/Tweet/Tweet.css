@@ -41,11 +41,16 @@
 
     p {
         color: var(--white);
-        font-size: 4rem;
+        font-size: 3rem;
     }
 
-    .edit {
+    .edit, .delete {
+        padding: 0;
+        border: none;
+        border-radius: 100%;
         font-size: 3.3rem;
+        color: var(--white);
+        background-color: var(--purple);
     }
 }
 
@@ -82,7 +87,7 @@
 
 /* +1024px */
 
-@media (orientation: landscape) and ((min-width: 1024px) or (min-height: 1024px)) {
+@media (orientation: landscape) and ((min-width: 1024px)) {
     .container-tweet {
         margin: 1.5rem;
         border-radius: 1.2rem;
@@ -96,7 +101,7 @@
         align-items: flex-start;
     
         p {
-            font-size: 1.5rem;
+            font-size: 1.1rem;
         }
     
         .user {
@@ -121,7 +126,7 @@
     
         p {
             color: var(--white);
-            font-size: 4rem;
+            font-size: 3rem;
         }
     
         .edit {

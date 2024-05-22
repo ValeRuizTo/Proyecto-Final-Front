@@ -1,16 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../Right/Right.css';
-import imgProfile from '../../assets/profile.jpg';
+import {Perfil} from '../index';
 
 const MyRight = () => {
     return (
         <div className="right-container">
-            <div className="img-container-right">
-                 <img src={imgProfile} alt="Profile" />
-                 <p className="user">Nombre Usuario</p>
-                 <p className="email-user">Correo</p>
-            </div>
+            <Perfil/>
 
             <div className="right-container-buttons">
                 <Link to="/new" className="btn-create-tweet">Crear Tweet</Link>

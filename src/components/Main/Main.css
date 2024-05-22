@@ -4,10 +4,15 @@
     flex-direction: column;
 }
 
+.section-2 {
+    overflow-y: scroll;
+}
+
 .my-section-2 {
     padding: 1rem;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
 
     h2 {
         font-family: 'Baloo Thambi', sans-serif;
@@ -39,6 +44,7 @@
 @media (orientation: landscape) and ((min-width: 1024px) or (min-height: 1024px)) {
     .main-container {
         width:100%;
+        border-left: 0.1rem solid var(--dark-grey);
     }
 
     h2 {

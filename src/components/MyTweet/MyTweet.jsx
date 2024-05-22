@@ -12,8 +12,8 @@ const MyTweet = ({ username, tweet, hashtag }) => {
                 <p className="text-hashtag">{hashtag}</p>
             </div>
             <div className="purple-container-tweet">
-                <p className="edit">🖍</p>
-                <p className="delete">🗑</p>
+                <button className="edit">🖍</button>
+                <button className="delete">🗑</button>
             </div>
         </div>
     );

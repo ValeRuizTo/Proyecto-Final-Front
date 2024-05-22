@@ -10,6 +10,7 @@ const Signin = () => {
     const [usernameError, setUsernameError] = useState(false);
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -18,20 +19,45 @@ const Signin = () => {
             setUsernameError(value.trim() === '');
         } else if (name === 'email') {
             setEmail(value);
-            setEmailError(value.trim() === '');
+            // Validación del formato de correo electrónico utilizando expresiones regulares
+            const isValidEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/.test(value);
+            setEmailError(value.trim() === '' || !isValidEmail);
         } else if (name === 'password') {
             setPassword(value);
             setPasswordError(value.trim() === '');
         }
     };
 
-    const handleSignIn = () => {
+    const handleSignIn = async () => {
         setUsernameError(username.trim() === '');
-        setEmailError(email.trim() === '');
+        setEmailError(email.trim() === '' || !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/.test(email));
         setPasswordError(password.trim() === '');
 
-        if (username.trim() !== '' && password.trim() !== '' && email.trim() ) {
-            return <Link to="/" />;
+        // Verificar si todos los campos están llenos y sin errores antes de enviar la solicitud
+        if (username.trim() !== '' && email.trim() !== '' && password.trim() !== '' && !emailError) {
+            try {
+                const response = await fetch('https://api-proyecto-beryl.vercel.app/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, email, password })
+                });
+
+                if (response.ok) {
+                    // Iniciar sesión correctamente, realizar acciones necesarias (como redireccionar)
+                    window.location.href = '/success';
+                } else {
+                    // Manejar errores de autenticación
+                    const errorData = await response.json();
+                    console.log('Error data:', errorData); // Agregado para depuración
+                    setErrorMessage(errorData.error || '¡Credenciales incorrectas!');
+                }
+            } catch (error) {
+                // Manejar errores de red u otros errores
+                console.error('Error al iniciar sesión:', error);
+                setErrorMessage('Ocurrió un error al iniciar sesión. Detalle: ' + error.message);
+            }
         }
     };
 
@@ -53,10 +79,9 @@ const Signin = () => {
                             type="text"
                             placeholder="Ingresa tu usuario"
                             value={username}
-                            onChange={handleInputChange}
-                        />
+                            onChange={handleInputChange} />
                         <label htmlFor="email" className={emailError ? 'label-error' : ''}>
-                            {emailError ? 'Campo vacío' : 'Correo:'}
+                            {emailError ? 'Correo inválido' : 'Correo:'}
                         </label>
                         <input
                             name="email"
@@ -64,8 +89,7 @@ const Signin = () => {
                             type="email"
                             placeholder="Ingresa tu email"
                             value={email}
-                            onChange={handleInputChange}
-                        />
+                            onChange={handleInputChange} />
                         <label htmlFor="user-password" className={passwordError ? 'label-error' : ''}>
                             {passwordError ? 'Campo vacío' : 'Contraseña:'}
                         </label>
@@ -78,12 +102,14 @@ const Signin = () => {
                             onChange={handleInputChange}
                         />
                     </form>
-                    <Link
-                        to={username.trim() !== '' && password.trim() !== '' ? '/success' : '#'}
+                    <button
                         className="btn-crear"
                         onClick={handleSignIn}>
                         Ingresar
-                    </Link>
+                    </button>
+                    {errorMessage && (
+                        <p className="error-message">{errorMessage}</p>
+                    )}
                 </div>
             </div>
         </div>
