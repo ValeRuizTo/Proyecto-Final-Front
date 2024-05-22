@@ -44,13 +44,17 @@
         font-size: 3rem;
     }
 
-    .edit, .delete {
+    .edit, .delete, .save {
         padding: 0;
         border: none;
         border-radius: 100%;
         font-size: 3.3rem;
         color: var(--white);
         background-color: var(--purple);
+    }
+
+    .save {
+        font-size: 2.5rem;
     }
 }
 
@@ -142,6 +146,7 @@
 }
 
 .edit:hover,
-.delete:hover {
+.delete:hover,
+.save:hover {
     color:var(--dark-purple);
 }
