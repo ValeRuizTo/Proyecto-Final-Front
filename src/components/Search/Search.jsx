@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Search.css';
 
-const Search = () => {
+const Search = ({ onResults }) => {
     const [searchQuery, setSearchQuery] = useState('');
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
+
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('username');
 
     const handleSearchAll = () => {
+        if (!token) {
+            setError('No token found. Please log in.');
+            return;
+        }
+
+        setLoading(true);
         fetch(`https://api-proyecto-beryl.vercel.app/search/key?search=${encodeURIComponent(searchQuery)}`, {
             method: 'GET',
             headers: {
@@ -16,13 +24,24 @@ const Search = () => {
         })
         .then(response => response.json())
         .then(data => {
+            setLoading(false);
+            onResults(data.tweets || []); // Pasa los resultados a través de la función onResults
             console.log('Resultados de búsqueda (All):', data);
-            // Aquí puedes manejar los resultados de la búsqueda (por ejemplo, actualizar el estado para mostrar los resultados)
         })
-        .catch(error => console.error('Error al buscar (All):', error));
+        .catch(error => {
+            setLoading(false);
+            setError('Error al buscar (All): ' + error.message);
+            console.error('Error al buscar (All):', error);
+        });
     };
 
     const handleSearchHashtag = () => {
+        if (!token) {
+            setError('No token found. Please log in.');
+            return;
+        }
+
+        setLoading(true);
         fetch(`https://api-proyecto-beryl.vercel.app/search/hashtag?search=${encodeURIComponent(searchQuery)}`, {
             method: 'GET',
             headers: {
@@ -32,11 +51,15 @@ const Search = () => {
         })
         .then(response => response.json())
         .then(data => {
+            setLoading(false);
+            onResults(data.tweets || []); // Pasa los resultados a través de la función onResults
             console.log('Resultados de búsqueda (#):', data);
-            // Aquí puedes manejar los resultados de la búsqueda (por ejemplo, actualizar el estado para mostrar los resultados)
         })
-        .catch(error => console.error('Error al buscar (#):', error));
-    
+        .catch(error => {
+            setLoading(false);
+            setError('Error al buscar (#): ' + error.message);
+            console.error('Error al buscar (#):', error);
+        });
     };
 
     return (
@@ -51,6 +74,8 @@ const Search = () => {
                 <button className="btn-all" onClick={handleSearchAll}>All</button>
                 <button className="btn-hashtag" onClick={handleSearchHashtag}>#</button>
             </div>
+            {loading && <p>Loading...</p>}
+            {error && <p className="error">{error}</p>}
         </div>
     );
 };
