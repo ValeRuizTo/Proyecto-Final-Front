@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import '../Tweet/Tweet.css';
 
 
-const MyTweet = ({ username, tweet, hashtag, index }) => {
+// eslint-disable-next-line react/prop-types
+const MyTweet = ({ username, tweet, hashtag, lugar }) => {
+    
     const [isEditing, setIsEditing] = useState(false);
     const [currentTweet, setCurrentTweet] = useState(tweet);
     const [currentHashtag, setCurrentHashtag] = useState(hashtag);
@@ -10,13 +12,14 @@ const MyTweet = ({ username, tweet, hashtag, index }) => {
     const handleEdit = () => {
         setIsEditing(true);
     };
-
     const handleSave = () => {
         setIsEditing(false);
+        const finalHashtag = currentHashtag ? currentHashtag : '#socialgarden';
+
         // Recuperar el token de localStorage
         const token = localStorage.getItem('token');
         // Hacer la solicitud PUT a la API con el token de autorización
-        fetch(`https://api-proyecto-beryl.vercel.app/newtweet/${index}`, {
+        fetch(`https://api-proyecto-beryl.vercel.app/newtweet/${lugar}`, {
             method: 'PUT',
             headers: {
                 'Authorization': token, // Incluye el token en el encabezado de autorización
@@ -24,15 +27,37 @@ const MyTweet = ({ username, tweet, hashtag, index }) => {
             },
             body: JSON.stringify({
                 tweet: currentTweet,
-                hashtag: currentHashtag
+                hashtag: finalHashtag
             })
         })
         .then(response => response.json())
         .then(data => {
             console.log('Tweet actualizado:', data);
+            // Actualizar el estado con el hashtag final
+            setCurrentHashtag(finalHashtag);
         })
         .catch(error => console.error('Error actualizando tweet:', error));
     };
+
+    const handleDelete = () => {
+        //Recuperar el token de localStorage
+        const token = localStorage.getItem('token');
+        // Hacer la solicitud DELETE a la API con el token de autorización
+        fetch(`https://api-proyecto-beryl.vercel.app/newtweet/${lugar}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': token, // Incluye el token en el encabezado de autorización
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Tweet eliminado:', data);
+            // Aquí podrías agregar lógica para actualizar la interfaz, como eliminar el tweet de la lista
+        })
+        .catch(error => console.error('Error eliminando tweet:', error));
+    };
+    
 
     return (
         <div className="container-tweet"> 
@@ -56,12 +81,11 @@ const MyTweet = ({ username, tweet, hashtag, index }) => {
                 ) : (
                     <p className="edit" onClick={handleEdit}>🖍</p>
                 )}
-                <p className="delete">🗑</p>
+                <p className="delete"onClick={handleDelete}>🗑</p>
             </div>
         </div>
     );
 };
-
 // Componente para mostrar la lista de tweets del usuario logueado
 const TweetsList = () => {
     const [tweets, setTweets] = useState([]);
@@ -100,7 +124,7 @@ const TweetsList = () => {
                     username={username} // Pasar el nombre de usuario a cada MyTweet
                     tweet={tweet.tweet}
                     hashtag={tweet.hashtag}
-                    index={index}
+                    lugar={tweet.lugar}
                 />
             ))}
         </div>
