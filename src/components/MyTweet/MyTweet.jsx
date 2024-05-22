@@ -53,7 +53,7 @@ const MyTweet = ({ username, tweet, hashtag, lugar }) => {
         .then(response => response.json())
         .then(data => {
             console.log('Tweet eliminado:', data);
-            // Aquí podrías agregar lógica para actualizar la interfaz, como eliminar el tweet de la lista
+            
         })
         .catch(error => console.error('Error eliminando tweet:', error));
     };
@@ -64,7 +64,7 @@ const MyTweet = ({ username, tweet, hashtag, lugar }) => {
             <div className="white-container-tweet">
                 <p className="user">{username}</p>
                 {isEditing ? (
-                    <div>
+                    <div className="input-container">
                         <input value={currentTweet} onChange={(e) => setCurrentTweet(e.target.value)} />
                         <input value={currentHashtag} onChange={(e) => setCurrentHashtag(e.target.value)} />
                     </div>
@@ -77,11 +77,11 @@ const MyTweet = ({ username, tweet, hashtag, lugar }) => {
             </div>
             <div className="purple-container-tweet">
                 {isEditing ? (
-                    <p className="save" onClick={handleSave}>💾</p>
-                ) : (
-                    <p className="edit" onClick={handleEdit}>✏️</p>
-                )}
-                <p className="delete"onClick={handleDelete}>🗑️  </p>
+                        <button className="save" onClick={handleSave}>🖿</button>
+                    ) : (
+                        <button className="edit" onClick={handleEdit}>🖍</button>
+                    )}
+                    <button className="delete"onClick={handleDelete}>🗑</button>
             </div>
         </div>
     );
@@ -132,3 +132,4 @@ const TweetsList = () => {
 };
 
 export default TweetsList;
+

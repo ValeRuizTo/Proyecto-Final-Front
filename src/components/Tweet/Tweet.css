@@ -14,6 +14,7 @@
     flex-direction: column;
     gap: 0.5rem;
     align-items: flex-start;
+    width: 100%;
 
     p {
         font-size: 1.2rem;
@@ -28,6 +29,26 @@
         font-family: 'Arial Italic', 'Times New Roman Italic', sans-serif;
         color: var(--blue)
     }
+
+    input {
+        height: 1.5rem;
+        border-radius: 0.5rem;
+        border: 0.1rem solid var(--dark-grey);
+        padding: 0.5rem;
+        font-size: 1rem;
+        width: 93%;
+    }
+
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    input {
+        width: 93%;
+    }
 }
 
 .purple-container-tweet {
@@ -41,11 +62,24 @@
 
     p {
         color: var(--white);
-        font-size: 4rem;
+        font-size: 3rem;
     }
 
-    .edit {
+    .edit, .delete, .save {
+        padding: 0;
+        border: none;
+        border-radius: 100%;
         font-size: 3.3rem;
+        color: var(--white);
+        background-color: var(--purple);
+    }
+
+    .save {
+        font-size: 2.5rem;
+    }
+
+    input {
+        width: 96%;
     }
 }
 
@@ -60,8 +94,13 @@
     .white-container-tweet {
         padding: 2rem;
         gap: 1.5rem;
+
         p {
             font-size: 2rem;
+        }
+
+        input {
+            width: 97%;
         }
     }
     
@@ -82,21 +121,21 @@
 
 /* +1024px */
 
-@media (orientation: landscape) and ((min-width: 1024px) or (min-height: 1024px)) {
+@media (orientation: landscape) and ((min-width: 1024px)) {
     .container-tweet {
         margin: 1.5rem;
         border-radius: 1.2rem;
     } 
     
     .white-container-tweet {
-        padding: 1rem;
+        padding: 1.5rem;
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
         align-items: flex-start;
     
         p {
-            font-size: 1.5rem;
+            font-size: 1.1rem;
         }
     
         .user {
@@ -107,6 +146,10 @@
             font-style: italic;
             font-family: 'Arial Italic', 'Times New Roman Italic', sans-serif;
             color: var(--blue)
+        }
+
+        input {
+            width: 97%;
         }
     }
     
@@ -121,7 +164,7 @@
     
         p {
             color: var(--white);
-            font-size: 4rem;
+            font-size: 3rem;
         }
     
         .edit {
@@ -137,6 +180,7 @@
 }
 
 .edit:hover,
-.delete:hover {
+.delete:hover,
+.save:hover {
     color:var(--dark-purple);
 }
