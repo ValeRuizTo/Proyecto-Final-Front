@@ -70,7 +70,7 @@ const MyTweet = ({ username, tweet, hashtag, lugar }) => {
                         <input value={currentHashtag} onChange={(e) => setCurrentHashtag(e.target.value)} />
                     </div>
                 ) : (
-                    <div>
+                    <div className='my-container-text'>
                         <p className="text-tweet">{currentTweet}</p>
                         <p className="text-hashtag">{currentHashtag}</p>
                     </div>
