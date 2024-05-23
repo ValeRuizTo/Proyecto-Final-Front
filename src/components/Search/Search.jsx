@@ -67,12 +67,12 @@ const Search = ({ onResults }) => {
         <div className="search-container">
             <input 
                 type="text" 
-                placeholder="🔍︎" 
+                placeholder="Buscar por palabra clave o #" 
                 value={searchQuery} 
                 onChange={(e) => setSearchQuery(e.target.value)} 
             />
             <div className="btn-container">
-                <button className="btn-all" onClick={handleSearchAll}>All</button>
+                <button className="btn-all" onClick={handleSearchAll}>🔍︎</button>
                 <button className="btn-hashtag" onClick={handleSearchHashtag}>#</button>
             </div>
             {loading && <p>Loading...</p>}
