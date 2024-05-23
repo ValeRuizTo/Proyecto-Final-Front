@@ -132,4 +132,3 @@ const TweetsList = () => {
 };
 
 export default TweetsList;
-
