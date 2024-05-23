@@ -45,6 +45,7 @@
     .main-container {
         width:100%;
         border-left: 0.1rem solid var(--dark-grey);
+        border-right: 0.1rem solid var(--dark-grey);
     }
 
     h2 {

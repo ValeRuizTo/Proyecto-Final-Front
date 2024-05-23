@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import '../Tweet/Tweet.css';
 
-
 // eslint-disable-next-line react/prop-types
 const MyTweet = ({ username, tweet, hashtag, lugar }) => {
     
@@ -12,6 +11,7 @@ const MyTweet = ({ username, tweet, hashtag, lugar }) => {
     const handleEdit = () => {
         setIsEditing(true);
     };
+
     const handleSave = () => {
         setIsEditing(false);
         const finalHashtag = currentHashtag ? currentHashtag : '#socialgarden';
@@ -32,6 +32,7 @@ const MyTweet = ({ username, tweet, hashtag, lugar }) => {
         })
         .then(response => response.json())
         .then(data => {
+            window.alert('¡Tweet modificado con éxito!');
             console.log('Tweet actualizado:', data);
             // Actualizar el estado con el hashtag final
             setCurrentHashtag(finalHashtag);
@@ -53,11 +54,11 @@ const MyTweet = ({ username, tweet, hashtag, lugar }) => {
         .then(response => response.json())
         .then(data => {
             console.log('Tweet eliminado:', data);
-            
+            window.alert('¡Tweet eliminado con éxito!'); // Mostrar alerta de eliminación exitosa
+            window.location.reload(); // Recargar la página después de eliminar el tweet
         })
         .catch(error => console.error('Error eliminando tweet:', error));
     };
-    
 
     return (
         <div className="container-tweet"> 
@@ -69,7 +70,7 @@ const MyTweet = ({ username, tweet, hashtag, lugar }) => {
                         <input value={currentHashtag} onChange={(e) => setCurrentHashtag(e.target.value)} />
                     </div>
                 ) : (
-                    <div>
+                    <div className='my-container-text'>
                         <p className="text-tweet">{currentTweet}</p>
                         <p className="text-hashtag">{currentHashtag}</p>
                     </div>
@@ -81,7 +82,7 @@ const MyTweet = ({ username, tweet, hashtag, lugar }) => {
                     ) : (
                         <button className="edit" onClick={handleEdit}>🖍</button>
                     )}
-                    <button className="delete"onClick={handleDelete}>🗑</button>
+                    <button className="delete" onClick={handleDelete}>🗑</button>
             </div>
         </div>
     );
@@ -132,4 +133,3 @@ const TweetsList = () => {
 };
 
 export default TweetsList;
-
