@@ -32,6 +32,7 @@ const MyTweet = ({ username, tweet, hashtag, lugar }) => {
         })
         .then(response => response.json())
         .then(data => {
+            window.alert('¡Tweet modificado con éxito!');
             console.log('Tweet actualizado:', data);
             // Actualizar el estado con el hashtag final
             setCurrentHashtag(finalHashtag);
