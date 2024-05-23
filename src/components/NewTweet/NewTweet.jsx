@@ -19,7 +19,13 @@ const NewTweet = () => {
             setTweetError(false);
         }
 
-        const finalHashtag = hashtag.trim() === '' ? '#socialGarden' : hashtag;
+        // Establecer el hashtag final
+        let finalHashtag = '';
+        if (hashtag.trim() === '' || hashtag.trim() === '#') {
+            finalHashtag = '#socialGarden'; // Si está vacío o solo contiene #, se establece como #socialGarden
+        } else {
+            finalHashtag = hashtag.trim().startsWith('#') ? hashtag.trim() : `#${hashtag.trim()}`; // Si no comienza con #, se le agrega
+        }
 
         if (tweet.trim() !== '') {
             enviarTweet(finalHashtag);
@@ -78,8 +84,8 @@ const NewTweet = () => {
                     type="text" 
                     className="hashtagInput" 
                     name="hashtag" 
-                    value={hashtag} 
-                    onChange={(e) => setHashtag(e.target.value)} 
+                    value={hashtag === '' ? '#socialGarden' : hashtag} 
+                    onChange={(e) => setHashtag(e.target.value.startsWith('#') ? e.target.value : `#${e.target.value}`)} 
                 />
                 <button type="submit" className="btn-save">Guardar</button>
             </form>
