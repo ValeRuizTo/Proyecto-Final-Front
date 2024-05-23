@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './Search.css';
 
-// eslint-disable-next-line react/prop-types
-const Search = ({ onResults }) => {
+const Search = ({ onResults, onResetResults }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -19,14 +18,14 @@ const Search = ({ onResults }) => {
         fetch(`https://api-proyecto-beryl.vercel.app/search/key?search=${encodeURIComponent(searchQuery)}`, {
             method: 'GET',
             headers: {
-                'Authorization': token, // Incluye el token en el encabezado de autorización
+                'Authorization': token,
                 'Content-Type': 'application/json'
             }
         })
         .then(response => response.json())
         .then(data => {
             setLoading(false);
-            onResults(data.tweets || []); // Pasa los resultados a través de la función onResults
+            onResults(data.tweets || []);
             console.log('Resultados de búsqueda (All):', data);
         })
         .catch(error => {
@@ -46,14 +45,14 @@ const Search = ({ onResults }) => {
         fetch(`https://api-proyecto-beryl.vercel.app/search/hashtag?search=${encodeURIComponent(searchQuery)}`, {
             method: 'GET',
             headers: {
-                'Authorization': token, // Incluye el token en el encabezado de autorización
+                'Authorization': token,
                 'Content-Type': 'application/json'
             }
         })
         .then(response => response.json())
         .then(data => {
             setLoading(false);
-            onResults(data.tweets || []); // Pasa los resultados a través de la función onResults
+            onResults(data.tweets || []);
             console.log('Resultados de búsqueda (#):', data);
         })
         .catch(error => {
@@ -61,6 +60,11 @@ const Search = ({ onResults }) => {
             setError('Error al buscar (#): ' + error.message);
             console.error('Error al buscar (#):', error);
         });
+    };
+
+    const handleResetResults = () => {
+        setSearchQuery(''); 
+        onResetResults();
     };
 
     return (
@@ -72,9 +76,9 @@ const Search = ({ onResults }) => {
                 onChange={(e) => setSearchQuery(e.target.value)} 
             />
             <div className="btn-container">
-                <button className="btn-tweet" onClick={handleSearchTweet}>🔍︎</button>
+                <button className="btn-tweet" onClick={handleSearchAll}>🔍︎</button>
                 <button className="btn-hashtag" onClick={handleSearchHashtag}>#</button>
-                <button className="btn-all" onClick={handleSearchAll}>All</button>
+                <button className="btn-all" onClick={handleResetResults}>All</button>
             </div>
             {loading && <p>Loading...</p>}
             {error && <p className="error">{error}</p>}
