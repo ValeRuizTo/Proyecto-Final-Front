@@ -72,8 +72,9 @@ const Search = ({ onResults }) => {
                 onChange={(e) => setSearchQuery(e.target.value)} 
             />
             <div className="btn-container">
-                <button className="btn-all" onClick={handleSearchAll}>🔍︎</button>
+                <button className="btn-tweet" onClick={handleSearchTweet}>🔍︎</button>
                 <button className="btn-hashtag" onClick={handleSearchHashtag}>#</button>
+                <button className="btn-all" onClick={handleSearchAll}>All</button>
             </div>
             {loading && <p>Loading...</p>}
             {error && <p className="error">{error}</p>}
