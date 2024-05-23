@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import '../Tweet/Tweet.css';
 
-
 // eslint-disable-next-line react/prop-types
 const MyTweet = ({ username, tweet, hashtag, lugar }) => {
     
@@ -12,6 +11,7 @@ const MyTweet = ({ username, tweet, hashtag, lugar }) => {
     const handleEdit = () => {
         setIsEditing(true);
     };
+
     const handleSave = () => {
         setIsEditing(false);
         const finalHashtag = currentHashtag ? currentHashtag : '#socialgarden';
@@ -53,11 +53,11 @@ const MyTweet = ({ username, tweet, hashtag, lugar }) => {
         .then(response => response.json())
         .then(data => {
             console.log('Tweet eliminado:', data);
-            
+            window.alert('¡Tweet eliminado con éxito!'); // Mostrar alerta de eliminación exitosa
+            window.location.reload(); // Recargar la página después de eliminar el tweet
         })
         .catch(error => console.error('Error eliminando tweet:', error));
     };
-    
 
     return (
         <div className="container-tweet"> 
@@ -81,7 +81,7 @@ const MyTweet = ({ username, tweet, hashtag, lugar }) => {
                     ) : (
                         <button className="edit" onClick={handleEdit}>🖍</button>
                     )}
-                    <button className="delete"onClick={handleDelete}>🗑</button>
+                    <button className="delete" onClick={handleDelete}>🗑</button>
             </div>
         </div>
     );
