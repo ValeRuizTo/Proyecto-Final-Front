@@ -1,10 +1,4 @@
-# Proyecto-Final
-
-## Nombres
-
-Valentina Ruiz (0000300604)
-
-Mariana Salas (0000296781)
+#Red Social
 
 ## Trello
 https://trello.com/invite/b/qlohBrjs/ATTI611596eb87679a01370fcbea41a554da0FD62BF4/proyecto-final
