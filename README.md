@@ -1,5 +1,5 @@
-#Red Social
-
+# Red Social
+Se creo una red social similar a Twitter, la aplicacion desplegada no esta completamente funcional porque la API usa firebase y las credenciales ya se vencieron 
 ## Trello
 https://trello.com/invite/b/qlohBrjs/ATTI611596eb87679a01370fcbea41a554da0FD62BF4/proyecto-final
 
